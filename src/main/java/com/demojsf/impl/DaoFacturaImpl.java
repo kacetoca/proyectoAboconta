@@ -3,6 +3,7 @@ package com.demojsf.impl;
 
 import com.demojsf.dao.DaoFactura;
 import com.demojsf.db.JdbcConnect;
+import com.demojsf.model.Contrato;
 import com.demojsf.model.Factura;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,29 +22,55 @@ public class DaoFacturaImpl implements DaoFactura<Factura> {
     public void save(Factura f) {
         Connection connect = null;
         try {
-
+            
+            
             connect = JdbcConnect.getConnect();
+            
+            PreparedStatement pst = connect.prepareStatement("Select * from Contrato where estado=\"Activo\" and fecvenc=w order by 1");
+            ResultSet rs = pst.executeQuery();
+            
+            while (rs.next()) {
+                 Contrato ct = new Contrato();
 
-            PreparedStatement pst = connect.
-                    prepareStatement("Insert into Factura values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-            pst.setInt(1, f.getIdfactura());
-            pst.setInt(2, f.getCons_factura());
-            pst.setInt(3, f.getNum_contrato());
-            pst.setTimestamp(4, new Timestamp(f.getFecha_creacion().getTime()));
-            pst.setTimestamp(5, new Timestamp(f.getFecha_facturacion().getTime()));
-            pst.setInt(6, f.getDias());
-            pst.setString(7, f.getPrefijo());
-            pst.setString(8, f.getCod_propiedad());
-            pst.setString(9, f.getCc_nit_cliente());
-            pst.setString(10, f.getObservacion());
-            pst.setInt(11, f.getValor());
-            pst.setInt(12, f.getSaldo_factura());
-            pst.setInt(13, f.getIva());
-            pst.setString(14, f.getEstado_factura());
-            pst.setString(15, f.getEstado_comision());
-            pst.setString(16, f.getEstado_recaudo());
-            pst.executeUpdate();
-            connect.commit();
+                ct.setNumcontrato(rs.getInt(1));
+                ct.setFeccreacion(rs.getDate(2));
+                ct.setFecinicio(rs.getDate(3));
+                ct.setFecvenc(rs.getDate(4));
+                ct.setIdclie(rs.getInt(5));
+                ct.setValor(rs.getDouble(6));
+                ct.setObservacion(rs.getString(7));
+                ct.setEstado(rs.getString(8));
+                ct.setIdpropied(rs.getInt(9));
+                
+                
+                
+                
+                
+                pst = connect.prepareStatement("Insert into Factura values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                pst.setInt(1, f.getIdfactura());
+                pst.setInt(2, f.getCons_factura());
+                pst.setInt(3, f.getNum_contrato());
+                pst.setTimestamp(4, new Timestamp(f.getFecha_creacion().getTime()));
+                pst.setTimestamp(5, new Timestamp(f.getFecha_facturacion().getTime()));
+                pst.setInt(6, f.getDias());
+                pst.setString(7, f.getPrefijo());
+                pst.setString(8, f.getCod_propiedad());
+                pst.setString(9, f.getCc_nit_cliente());
+                pst.setString(10, f.getObservacion());
+                pst.setInt(11, f.getValor());
+                pst.setInt(12, f.getSaldo_factura());
+                pst.setInt(13, f.getIva());
+                pst.setString(14, f.getEstado_factura());
+                pst.setString(15, f.getEstado_comision());
+                pst.setString(16, f.getEstado_recaudo());
+                pst.executeUpdate();
+                connect.commit();
+                
+                
+                
+                
+                
+            }
         } catch (ClassNotFoundException | SQLException ex) {
             try {
                 if (connect != null) {
@@ -56,7 +83,7 @@ public class DaoFacturaImpl implements DaoFactura<Factura> {
         }
     }
 
-    @Override
+   /* @Override
     public void update(Factura f) {
         Connection connect = null;
         try {
@@ -174,7 +201,7 @@ public class DaoFacturaImpl implements DaoFactura<Factura> {
             }
             Logger.getLogger(DaoFacturaImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    }*/
 
     @Override
     public List<Factura> getFact() {

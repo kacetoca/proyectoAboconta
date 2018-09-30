@@ -21,9 +21,7 @@
            
            <p:panel header="Registro de Faturas">
                 <f:facet name="footer">  <!-- disabled="#{facturaBean.modoInsert}" disabled="#{facturaBean.modoEdit}" -->
-                    <p:commandButton  icon="fa fa-save Fs16 white" update="tabla,@form"  id="btn"  actionListener="#{facturaBean.save()}" ></p:commandButton>
-                    <p:commandButton  icon="fa fa-refresh Fs16 white" update="tabla,@form"  id="btn2"  actionListener="#{facturaBean.update()}"></p:commandButton>
-                    <p:commandButton  icon="fa fa-trash Fs16 white" update="tabla,@form"  id="btnEliminar"  actionListener="#{facturaBean.delete()}"></p:commandButton>
+                    <p:commandButton  icon="fa fa-gears Fs16 white" update="tabla,@form"  id="btn"  actionListener="#{facturaBean.save()}" ></p:commandButton>
                 </f:facet>
                
                <p:panelGrid columns="4" layout="grid" style="border:0px !important; background:none;" styleClass="ui-panelgrid-blank">
@@ -55,8 +53,8 @@
                     <p:outputLabel for="exclusion_contrato">Excluir Contratos </p:outputLabel>
                     <p:inputText id="exclusion_contrato"  placeholder="Digite los contratos a Excluir" value="#{facturaBean.factura.cons_factura}"></p:inputText>
                   
-                    <p:outputLabel for="observacion">Excluir Contratos </p:outputLabel>
-                    <p:inputText id="observacion"  placeholder="Digite la observacion de la factura" value="#{facturaBean.factura.cons_factura}"></p:inputText>
+                    <p:outputLabel for="observacion">Observacion </p:outputLabel>
+                    <p:inputText id="observacion"  placeholder="Digite la observacion de la factura" value="#{facturaBean.factura.observacion}"></p:inputText>
                     
                     
                 </p:panelGrid>

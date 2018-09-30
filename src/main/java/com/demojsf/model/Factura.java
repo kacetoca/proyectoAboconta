@@ -24,6 +24,13 @@ import java.util.Date;
     private String estado_recaudo;
     private double valorComision;
 
+    public Factura() {
+        this.fecha_creacion=new Date();
+        this.fecha_facturacion=new Date();
+        this.fecha_vencimiento=new Date();
+    }
+  
+
     
     public double getValorComision() {
         return valorComision;

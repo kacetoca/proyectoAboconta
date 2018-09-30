@@ -106,7 +106,7 @@ public class FacturaJSFManagedBean implements Serializable {
         factura.setIdfactura(lista.size() + 1);
     }
     
-    public void delete() {
+   /* public void delete() {
 
         dao.delete(factura);
         lista = dao.getFact();
@@ -146,7 +146,7 @@ public class FacturaJSFManagedBean implements Serializable {
         factura = new Factura();
         factura.setIdfactura(listarecau.size() + 1);
 
-    }
+    }*/
 
     public void changeMode() {
         modoEdit = false;
