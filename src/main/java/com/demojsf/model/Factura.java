@@ -10,6 +10,7 @@ import java.util.Date;
     private int num_contrato;
     private Date fecha_creacion;
     private Date fecha_facturacion;
+    private Date fecha_vencimiento;
     private int dias;
     private String prefijo;
     private String cod_propiedad;
@@ -71,7 +72,15 @@ import java.util.Date;
     public void setFecha_facturacion(Date fecha_facturacion) {
         this.fecha_facturacion = fecha_facturacion;
     }
+    
+    public Date getFecha_vencimiento() {
+        return fecha_vencimiento;
+    }
 
+    public void setFecha_vencimiento(Date fecha_vencimiento) {
+        this.fecha_vencimiento = fecha_vencimiento;
+    }
+    
     public int getDias() {
         return dias;
     }
