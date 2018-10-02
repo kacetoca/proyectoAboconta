@@ -31,7 +31,9 @@
                 <p:menuitem id="sm_factura" value="Facturacion" icon="icon-cog-alt" outcome="facturacion" />
                 <p:menuitem id="sm_recaudo" value="Recaudo" icon="icon-calculator" outcome="recaudo" />
                 <p:menuitem id="sm_comision" value="Comision" icon="icon-money" outcome="comision" />
-                <p:menuitem id="sm_inf_consul" value="Informes y Consultas" icon="icon-chart-bar" outcome="info_consul" />
+                <p:submenu id="sm_inf_consul" label="Informes y Consultas" icon="icon-chart-bar" >
+                <p:menuitem id="sm_listpropietarios" value="Listado Propietarios" icon="icon-chart-bar" outcome="listPropietarios" />
+                </p:submenu>
                 <p:submenu id="sm_allconfiguraion" label="Configuraciones" icon="icon-wrench" >
                     <p:menuitem id="sm_usuarios" value="Usuarios" icon="icon-users" outcome="user"/>
                     <p:menuitem id="sm_configuracion" value="Configuracion" icon="icon-cog" outcome="configuracion"/>              
