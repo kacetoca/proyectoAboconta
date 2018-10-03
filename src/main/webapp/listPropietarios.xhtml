@@ -30,48 +30,14 @@
                         <h:graphicImage url="./../resources/FONDOS/pdf.png"/>
                         <p:dataExporter type="pdf" target="tabla" fileName="PdfPropietario"/>    
                     </h:commandLink>
-         
-                    <p:column filterBy="#{item.ccnit}" headerText="ccnit">
-                        <h:outputText value="#{item.ccnit}"></h:outputText>
-                    </p:column>
-                    <p:column  filterBy="#{item.nombre}" headerText="nombre">
+                    <p:column  filterBy="#{item.nombre}" headerText="Nombre">
                         <h:outputText value="#{item.nombre}"></h:outputText>
                     </p:column>
-                    <p:column headerText="direccion">
-                        <h:outputText value="#{item.direccion}" ></h:outputText>
-                    </p:column>
-                    <p:column headerText="telefono">
-                        <h:outputText value="#{item.telefono}"></h:outputText>
-                    </p:column>
-                    <p:column headerText="celular">
-                        <h:outputText value="#{item.celular}" ></h:outputText>
-                    </p:column>
-                    <p:column headerText="email">
-                        <h:outputText value="#{item.email}"></h:outputText>
-                    </p:column>
-                    <p:column headerText="ciudad">
-                        <h:outputText value="#{item.ciudad}" ></h:outputText>
-                    </p:column>
-                    <p:column headerText="sexo">
-                        <h:outputText value="#{item.sexo}"></h:outputText>
-                    </p:column>
-                    <p:column headerText="porccomi">
+                    <p:column headerText="%Comision">
                         <h:outputText value="#{item.porccomi}" ></h:outputText>
-                    </p:column>
-                    <p:column sortBy="#{item.idpropietario}" headerText="id">
-                        <h:outputText value="#{item.idpropietario}"></h:outputText>
-                    </p:column>
-                    
-                    <p:column style="width:100px;text-align: center" headerText="Cargar">
-                        <p:commandButton update="@form"  process="@this" actionListener="#{propietarioBean.changeMode()}" icon="fa fa-eye Fs16 white" title="View">
-                            <f:setPropertyActionListener value="#{item}" target="#{propietarioBean.propietario}" />
-                        </p:commandButton>
-                    </p:column>
-                    
-                    
-                    
-                    
+                    </p:column>                     
                 </p:dataTable>
+                <p:chart type="bar" model="#{propietarioBean.barModel}" style="height:300px"/>          
             </p:panel>
         </h:form>
     </ui:define>

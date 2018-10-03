@@ -10,6 +10,10 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import org.primefaces.model.chart.Axis;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.ChartSeries;
 
 @Named(value = "propietarioBean")
 @ViewScoped
@@ -20,6 +24,8 @@ public class PropietarioJSFManagedBean implements Serializable {
     private DaoPropietario dao = new DaoPropietarioImpl();
     private boolean modoInsert = false;
     private boolean modoEdit = true;
+    private ChartSeries PropiData;
+    private BarChartModel barModel;
 
     public boolean isModoInsert() {
         return modoInsert;
@@ -45,6 +51,7 @@ public class PropietarioJSFManagedBean implements Serializable {
     public void iniciar() {
         lista = dao.getProperty();
         propietario.setIdpropietario(lista.size() + 1);
+        createBarModel();
     }
 
     public List<Propietario> getLista() {
@@ -93,5 +100,48 @@ public class PropietarioJSFManagedBean implements Serializable {
         modoEdit = false;
         modoInsert = true;
     }
+    
+    public BarChartModel getBarModel(){
+        return barModel;
+    }
+    
+    private BarChartModel initBarModel(){
+        BarChartModel model = new BarChartModel();
+        
+        PropiData = new ChartSeries();
+        PropiData.setLabel("porccomi");
+        for (Propietario cData: lista){
+            PropiData.set(cData.getNombre(), cData.getPorccomi());
+        }
+        
+        model.addSeries(PropiData);
+        
+        return model;
+               
+    }
+    
+    private void createBarModel(){
+        barModel = initBarModel();
+        
+        barModel.setTitle("Porcentaje de comision a propietarios");
+        barModel.setLegendPosition("ne");
+        
+        Axis xAxis = barModel.getAxis(AxisType.X);
+        xAxis.setLabel("Nombre");
+        
+        Axis yAxis = barModel.getAxis(AxisType.Y);
+        yAxis.setLabel("PorComi");
+        yAxis.setMin(0);
+        yAxis.setMax(75);
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
 } 
     
