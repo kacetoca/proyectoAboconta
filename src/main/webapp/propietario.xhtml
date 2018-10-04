@@ -76,19 +76,21 @@
             
             <p:panel header="Listado de Propietarios">
                 
-                <h:commandLink>
-                    <h:graphicImage url="resources/imagenes/PDF.png"/>
-                    <p:dataExporter type="pdf" target="tabla" fileName="PropietariosPdf"/>
-                </h:commandLink>
                 
-                <h:commandLink>
-                    <h:graphicImage url="resources/imagenes/XLS.png"/>
-                    <p:dataExporter type="xls" target="tabla" fileName="PropietariosXls"/>
-                </h:commandLink>
-                
-                
-                <p:dataTable  paginator="true" rows="10" emptyMessage="No hay propietarios creados" id="tabla" value="#{propietarioBean.lista}" var="item">
-                    
+                        <h:commandLink>
+                            <h:graphicImage url="resources/imagenes/PDF.png" />
+                            <p:dataExporter type="pdf" target="tabla" fileName="PropietariosPdf"/>
+                        </h:commandLink>
+
+                        <h:commandLink>
+                            <h:graphicImage url="resources/imagenes/XLS.png" />
+                            <p:dataExporter type="xls" target="tabla" fileName="PropietariosXls"/>
+                        </h:commandLink>
+
+                   
+                <p:dataTable  paginator="true"  rows="10" emptyMessage="No hay propietarios creados" id="tabla" value="#{propietarioBean.lista}" var="item">
+                   
+
                     <p:column headerText="ccnit">
                         <h:outputText value="#{item.ccnit}"></h:outputText>
                     </p:column>

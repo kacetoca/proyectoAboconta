@@ -23,33 +23,31 @@
                 
             </p:messages>
 
-            <p:panel header="Listado de Propietarios">
+            <p:panel header="Listado Propiedades">
                 
                 <h:commandLink>
                     <h:graphicImage url="resources/imagenes/PDF.png" width="24"/>
-                    <p:dataExporter type="pdf" target="tabla" fileName="listPropietariosPdf"/>
+                    <p:dataExporter type="pdf" target="tabla" fileName="InfoPropiedadesPdf"/>
                 </h:commandLink>
                 
                 <h:commandLink>
                     <h:graphicImage url="resources/imagenes/XLS.png" width="24"/>
-                    <p:dataExporter type="xls" target="tabla" fileName="listPropietariosXls"/>
+                    <p:dataExporter type="xls" target="tabla" fileName="InfoPropiedadesXls"/>
                 </h:commandLink>
                 
           
-                <p:dataTable  paginator="true" rows="10" emptyMessage="No hay propietarios creados" id="tabla" value="#{propietarioBean.lista}" var="item">
+                  <p:dataTable  paginator="true" rows="10" emptyMessage="No hay propiedades creadas" id="tabla" value="#{propiedadBean.lista}" var="item">
                     
-                    <h:commandLink>
-                        <h:graphicImage url="./../resources/FONDOS/pdf.png"/>
-                        <p:dataExporter type="pdf" target="tabla" fileName="PdfPropietario"/>    
-                    </h:commandLink>
-                    <p:column  filterBy="#{item.nombre}" headerText="Nombre">
-                        <h:outputText value="#{item.nombre}"></h:outputText>
+                   
+                    <p:column headerText="tipo">
+                        <h:outputText value="#{item.tipo}" ></h:outputText>
                     </p:column>
-                    <p:column headerText="%Comision">
-                        <h:outputText value="#{item.porccomi}" ></h:outputText>
-                    </p:column>                     
+                    <p:column  headerText="valor">
+                        <h:outputText value="#{item.valor}"></h:outputText>
+                    </p:column>
+                      
                 </p:dataTable>
-                <p:chart type="bar" model="#{propietarioBean.barModel}" style="height:300px"/>          
+                <p:chart type="bar" model="#{propiedadBean.barModel}" style="height:300px"/>          
             </p:panel>
         </h:form>
     </ui:define>

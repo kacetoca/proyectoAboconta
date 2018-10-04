@@ -69,6 +69,18 @@
             </p:panel>
             
             <p:panel header="Listado de Contratos">
+                
+                <h:commandLink>
+                    <h:graphicImage url="resources/imagenes/PDF.png" />
+                    <p:dataExporter type="pdf" target="tabla" fileName="ContratoPdf"/>
+                </h:commandLink>
+
+                <h:commandLink>
+                    <h:graphicImage url="resources/imagenes/XLS.png" />
+                    <p:dataExporter type="xls" target="tabla" fileName="ContratoXls"/>
+                </h:commandLink>
+                
+                
                 <p:dataTable  paginator="true" rows="10" emptyMessage="No hay contratos creados" id="tabla" value="#{contratoBean.lista}" var="item">
                     
                     <p:column sortBy="#{item.numcontrato}" headerText="numcontrato">

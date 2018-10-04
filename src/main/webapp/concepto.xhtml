@@ -42,6 +42,17 @@
             </p:panel>
             
             <p:panel header="Listado de Conceptos">
+                
+                <h:commandLink>
+                    <h:graphicImage url="resources/imagenes/PDF.png" />
+                    <p:dataExporter type="pdf" target="tabla" fileName="ConceptoPdf"/>
+                </h:commandLink>
+
+                <h:commandLink>
+                    <h:graphicImage url="resources/imagenes/XLS.png" />
+                    <p:dataExporter type="xls" target="tabla" fileName="ConceptoXls"/>
+                </h:commandLink>
+                
                 <p:dataTable  paginator="true" rows="10" emptyMessage="No hay conceptos creados" id="tabla" value="#{conceptoBean.lista}" var="item">
                     
                     <p:column sortBy="#{item.idconcepto}" headerText="idconcepto">
