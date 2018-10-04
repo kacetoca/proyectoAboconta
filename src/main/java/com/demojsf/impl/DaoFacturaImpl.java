@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,7 +20,7 @@ import java.util.logging.Logger;
 public class DaoFacturaImpl implements DaoFactura<Factura> {
 
     @Override
-    public void save(Factura f) {
+    public void save(int num_factura,Date fec_crea,Date fec_factu,Date fec_venc,int contrato_ini,int contrato_fin,String exluir,String obser) {
         Connection connect = null;
         try {
             
@@ -44,7 +45,7 @@ public class DaoFacturaImpl implements DaoFactura<Factura> {
                 
                 
                 
-                
+                /*
                 
                 pst = connect.prepareStatement("Insert into Factura values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
                 pst.setInt(1, f.getIdfactura());
@@ -62,7 +63,7 @@ public class DaoFacturaImpl implements DaoFactura<Factura> {
                 pst.setInt(13, f.getIva());
                 pst.setString(14, f.getEstado_factura());
                 pst.setString(15, f.getEstado_comision());
-                pst.setString(16, f.getEstado_recaudo());
+                pst.setString(16, f.getEstado_recaudo());*/
                 pst.executeUpdate();
                 connect.commit();
                 

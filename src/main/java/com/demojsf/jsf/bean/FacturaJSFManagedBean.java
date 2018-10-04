@@ -6,6 +6,7 @@ import com.demojsf.model.Factura;
 import com.demojsf.dao.DaoFactura;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
@@ -26,8 +27,85 @@ public class FacturaJSFManagedBean implements Serializable {
     private List<Factura> filteredFactura;
     private boolean modoInsert = false;
     private boolean modoEdit = true;
+    
+    ///******** Inicio de variables de formulario ********///
+    
+    private int num_factura;
+    private Date fec_crea;
+    private Date fec_factu;
+    private Date fec_venc;
+    private int contrato_ini;
+    private int contrato_fin;
+    private String exluir;
+    private String obser;
 
-   
+    public int getNum_factura() {
+        return num_factura;
+    }
+
+    public void setNum_factura(int num_factura) {
+        this.num_factura = num_factura;
+    }
+
+    public int getContrato_ini() {
+        return contrato_ini;
+    }
+
+    public void setContrato_ini(int contrato_ini) {
+        this.contrato_ini = contrato_ini;
+    }
+
+    public int getContrato_fin() {
+        return contrato_fin;
+    }
+
+    public void setContrato_fin(int contrato_fin) {
+        this.contrato_fin = contrato_fin;
+    }
+
+    public Date getFec_crea() {
+        return fec_crea;
+    }
+
+    public void setFec_crea(Date fec_crea) {
+        this.fec_crea = fec_crea;
+    }
+
+    public Date getFec_factu() {
+        return fec_factu;
+    }
+
+    public void setFec_factu(Date fec_factu) {
+        this.fec_factu = fec_factu;
+    }
+
+    public Date getFec_venc() {
+        return fec_venc;
+    }
+
+    public void setFec_venc(Date fec_venc) {
+        this.fec_venc = fec_venc;
+    }
+
+    public String getExluir() {
+        return exluir;
+    }
+
+    public void setExluir(String exluir) {
+        this.exluir = exluir;
+    }
+
+    public String getObser() {
+        return obser;
+    }
+
+    public void setObser(String obser) {
+        this.obser = obser;
+    }
+
+    
+
+   ///******** Fin de variables de formulario ********///
     
     
     public boolean isModoInsert() {
@@ -100,7 +178,7 @@ public class FacturaJSFManagedBean implements Serializable {
 
     public void save() {
 
-        dao.save(factura);
+        dao.save(num_factura,fec_crea,fec_factu,fec_venc,contrato_ini,contrato_fin,exluir,obser);
         lista = dao.getFact();
         factura = new Factura();
         factura.setIdfactura(lista.size() + 1);
