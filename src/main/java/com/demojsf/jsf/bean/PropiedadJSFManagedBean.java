@@ -27,7 +27,8 @@ public class PropiedadJSFManagedBean implements Serializable {
     private boolean modoEdit = true;
     private ChartSeries PropiedData;
     private BarChartModel barModel;
-
+    private double valorMax = 0;
+    
     public boolean isModoInsert() {
         return modoInsert;
     }
@@ -112,7 +113,11 @@ public class PropiedadJSFManagedBean implements Serializable {
         
         PropiedData = new ChartSeries();
         PropiedData.setLabel("valor");
+        valorMax = 0;
         for (Propiedad cData: lista){
+            if(cData.getValor() > valorMax ){
+                valorMax = cData.getValor();
+            }
             PropiedData.set(cData.getTipo(), cData.getValor());
         }
         
@@ -134,7 +139,7 @@ public class PropiedadJSFManagedBean implements Serializable {
         Axis yAxis = barModel.getAxis(AxisType.Y);
         yAxis.setLabel("Valor");
         yAxis.setMin(0);
-        yAxis.setMax(75);
+        yAxis.setMax(valorMax);
         
         
         

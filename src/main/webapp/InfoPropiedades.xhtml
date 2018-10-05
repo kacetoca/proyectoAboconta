@@ -39,15 +39,15 @@
                   <p:dataTable  paginator="true" rows="10" emptyMessage="No hay propiedades creadas" id="tabla" value="#{propiedadBean.lista}" var="item">
                     
                    
-                    <p:column headerText="tipo">
+                    <p:column filterBy="#{item.tipo}" headerText="Tipo">
                         <h:outputText value="#{item.tipo}" ></h:outputText>
                     </p:column>
-                    <p:column  headerText="valor">
+                    <p:column  headerText="Valor">
                         <h:outputText value="#{item.valor}"></h:outputText>
                     </p:column>
                       
                 </p:dataTable>
-                <p:chart type="bar" model="#{propiedadBean.barModel}" style="height:300px"/>          
+                <p:chart type="bar" model="#{propiedadBean.barModel}" style="height:300px" />          
             </p:panel>
         </h:form>
     </ui:define>

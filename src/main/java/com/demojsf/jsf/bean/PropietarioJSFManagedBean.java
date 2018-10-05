@@ -26,6 +26,7 @@ public class PropietarioJSFManagedBean implements Serializable {
     private boolean modoEdit = true;
     private ChartSeries PropiData;
     private BarChartModel barModel;
+    private double valorMax = 0;
 
     public boolean isModoInsert() {
         return modoInsert;
@@ -110,7 +111,11 @@ public class PropietarioJSFManagedBean implements Serializable {
         
         PropiData = new ChartSeries();
         PropiData.setLabel("porccomi");
+        valorMax = 0;
         for (Propietario cData: lista){
+            if(cData.getPorccomi() > valorMax ){
+                valorMax = cData.getPorccomi();
+            }
             PropiData.set(cData.getNombre(), cData.getPorccomi());
         }
         
@@ -132,7 +137,7 @@ public class PropietarioJSFManagedBean implements Serializable {
         Axis yAxis = barModel.getAxis(AxisType.Y);
         yAxis.setLabel("PorComi");
         yAxis.setMin(0);
-        yAxis.setMax(75);
+        yAxis.setMax(valorMax);
         
         
         
