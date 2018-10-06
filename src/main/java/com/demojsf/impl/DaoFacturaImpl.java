@@ -27,7 +27,12 @@ public class DaoFacturaImpl implements DaoFactura<Factura> {
             
             connect = JdbcConnect.getConnect();
             
-            PreparedStatement pst = connect.prepareStatement("Select * from Contrato where estado=\"Activo\" and fecvenc=w order by 1");
+            String filtro="";
+            
+            if(contrato_ini!=0)
+                filtro+=" and between(numcontrato, "+contrato_ini+", "+contrato_fin+")";
+            
+            PreparedStatement pst = connect.prepareStatement("Select * from Contrato where estado=\"Activo\" and fecvenc<="+ fec_factu + filtro +" order by 1");
             ResultSet rs = pst.executeQuery();
             
             while (rs.next()) {
