@@ -13,33 +13,82 @@ import java.util.Date;
     private Date fecha_vencimiento;
     private int dias;
     private String prefijo;
+    private String resDian;
+    private String rangoFactura;
     private String cod_propiedad;
     private String cc_nit_cliente;
     private String observacion;
-    private int valor;
-    private int saldo_factura;
-    private int iva;
+    private double valorCanon;
+    private double valorOtros;
+    private double valorIva;
+    private double valorTotal;
+    private double saldoCXC;
     private String estado_factura;
-    private String estado_comision;
-    private String estado_recaudo;
-    private double valorComision;
 
     public Factura() {
         this.fecha_creacion=new Date();
         this.fecha_facturacion=new Date();
         this.fecha_vencimiento=new Date();
     }
-  
 
+    public String getResDian() {
+        return resDian;
+    }
+
+    public void setResDian(String resDian) {
+        this.resDian = resDian;
+    }
+
+    public String getRangoFactura() {
+        return rangoFactura;
+    }
+
+    public void setRangoFactura(String rangoFactura) {
+        this.rangoFactura = rangoFactura;
+    }
+
+    public double getValorCanon() {
+        return valorCanon;
+    }
+
+    public void setValorCanon(double valorCanon) {
+        this.valorCanon = valorCanon;
+    }
+
+    public double getValorOtros() {
+        return valorOtros;
+    }
+
+    public void setValorOtros(double valorOtros) {
+        this.valorOtros = valorOtros;
+    }
+
+    public double getValorIva() {
+        return valorIva;
+    }
+
+    public void setValorIva(double valorIva) {
+        this.valorIva = valorIva;
+    }
+
+    public double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public double getSaldoCXC() {
+        return saldoCXC;
+    }
+
+    public void setSaldoCXC(double saldoCXC) {
+        this.saldoCXC = saldoCXC;
+    }
     
-    public double getValorComision() {
-        return valorComision;
-    }
-
-    public void setValorComision(double valorComision) {
-        this.valorComision = valorComision;
-    }
-
+    
+    
     public int getIdfactura() {
         return idfactura;
     }
@@ -128,30 +177,6 @@ import java.util.Date;
         this.observacion = observacion;
     }
 
-    public int getValor() {
-        return valor;
-    }
-
-    public void setValor(int valor) {
-        this.valor = valor;
-    }
-
-    public int getSaldo_factura() {
-        return saldo_factura;
-    }
-
-    public void setSaldo_factura(int saldo_factura) {
-        this.saldo_factura = saldo_factura;
-    }
-
-    public int getIva() {
-        return iva;
-    }
-
-    public void setIva(int iva) {
-        this.iva = iva;
-    }
-
     public String getEstado_factura() {
         return estado_factura;
     }
@@ -159,29 +184,13 @@ import java.util.Date;
     public void setEstado_factura(String estado_factura) {
         this.estado_factura = estado_factura;
     }
-
-    public String getEstado_comision() {
-        return estado_comision;
-    }
-
-    public void setEstado_comision(String estado_comision) {
-        this.estado_comision = estado_comision;
-    }
-
-    public String getEstado_recaudo() {
-        return estado_recaudo;
-    }
-
-    public void setEstado_recaudo(String estado_recaudo) {
-        this.estado_recaudo = estado_recaudo;
-    }
-
+    
     @Override
     public String toString() {
         return "Factura{" + "idfactura=" + idfactura + ", cons_factura=" + cons_factura + ", num_contrato=" + num_contrato + ", fecha_creacion=" + fecha_creacion + ", "
                 + "fecha_facturacion=" + fecha_facturacion + ", dias=" + dias + ", prefijo=" + prefijo + ", "
                 + "cod_propiedad=" + cod_propiedad + ", cc_nit_cliente=" + cc_nit_cliente + ", observacion=" + observacion + ","
-                + " valor=" + valor + ", saldo_factura=" + saldo_factura + ", iva" + iva + ", estado_factura" + estado_factura + ", estado_comision" + estado_comision + ", estado_recaudo" + estado_recaudo + '}';
+                + ", estado_factura" + estado_factura + '}';
     }
 
 }

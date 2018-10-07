@@ -32,22 +32,33 @@ public class DaoFacturaImpl implements DaoFactura<Factura> {
             if(contrato_ini!=0)
                 filtro+=" and between(numcontrato, "+contrato_ini+", "+contrato_fin+")";
             
-            PreparedStatement pst = connect.prepareStatement("Select * from Contrato where estado=\"Activo\" and fecvenc<="+ fec_factu + filtro +" order by 1");
+            PreparedStatement pst = connect.prepareStatement("Select numcontrato,idclie,idpropiedad from Contrato where estado=\"Activo\" and fecvenc<="+ fec_factu + filtro +" order by 1");
             ResultSet rs = pst.executeQuery();
             
             while (rs.next()) {
-                 Contrato ct = new Contrato();
-
-                ct.setNumcontrato(rs.getInt(1));
-                ct.setFeccreacion(rs.getDate(2));
-                ct.setFecinicio(rs.getDate(3));
-                ct.setFecvenc(rs.getDate(4));
-                ct.setIdclie(rs.getInt(5));
-                ct.setValor(rs.getDouble(6));
-                ct.setObservacion(rs.getString(7));
-                ct.setEstado(rs.getString(8));
-                ct.setIdpropied(rs.getInt(9));
                 
+                
+                Factura fac=new Factura();
+                
+                fac.setNum_contrato(rs.getInt(1));
+                fac.setCons_factura(num_factura++);
+                fac.setPrefijo("");
+                fac.setRangoFactura("");
+                fac.setResDian("");
+                
+                fac.setFecha_creacion(fec_crea);
+                fac.setFecha_facturacion(fec_factu);
+                fac.setFecha_vencimiento(fec_venc);
+                
+                fac.setDias((int)((fec_venc.getTime()-fec_factu.getTime())/86400000));
+                
+                fac.setObservacion(obser);
+                fac.setCc_nit_cliente(rs.getString(2));
+                fac.setCod_propiedad(rs.getString(3));                
+                
+                fac.setEstado_factura("Activo");
+                
+                // Recorrer el detalle de factura
                 
                 
                 /*
@@ -226,15 +237,6 @@ public class DaoFacturaImpl implements DaoFactura<Factura> {
                 f.setFecha_facturacion(rs.getDate(5));
                 f.setDias(rs.getInt(6));
                 f.setPrefijo(rs.getString(7));
-                f.setCod_propiedad(rs.getString(8));
-                f.setCc_nit_cliente(rs.getString(9));
-                f.setObservacion(rs.getString(10));
-                f.setValor(rs.getInt(11));
-                f.setSaldo_factura(rs.getInt(12));
-                f.setIva(rs.getInt(13));
-                f.setEstado_factura(rs.getString(14));
-                f.setEstado_comision(rs.getString(15));
-                f.setEstado_recaudo(rs.getString(16));
 
                 lista.add(f);
             }
@@ -267,14 +269,6 @@ public class DaoFacturaImpl implements DaoFactura<Factura> {
                 f.setPrefijo(rs.getString(7));
                 f.setCod_propiedad(rs.getString(8));
                 f.setCc_nit_cliente(rs.getString(9));
-                f.setObservacion(rs.getString(10));
-                f.setValor(rs.getInt(11));
-                f.setSaldo_factura(rs.getInt(12));
-                f.setIva(rs.getInt(13));
-                f.setEstado_factura(rs.getString(14));
-                f.setEstado_comision(rs.getString(15));
-                f.setEstado_recaudo(rs.getString(16));
-                f.setValorComision(rs.getInt(11)*rs.getDouble(17)/100);
 
                 lista.add(f);
             }
@@ -304,14 +298,7 @@ public class DaoFacturaImpl implements DaoFactura<Factura> {
                 f.setDias(rs.getInt(6));
                 f.setPrefijo(rs.getString(7));
                 f.setCod_propiedad(rs.getString(8));
-                f.setCc_nit_cliente(rs.getString(9));
-                f.setObservacion(rs.getString(10));
-                f.setValor(rs.getInt(11));
-                f.setSaldo_factura(rs.getInt(12));
-                f.setIva(rs.getInt(13));
-                f.setEstado_factura(rs.getString(14));
-                f.setEstado_comision(rs.getString(15));
-                f.setEstado_recaudo(rs.getString(16));
+
                 
                 lista.add(f);
             }
