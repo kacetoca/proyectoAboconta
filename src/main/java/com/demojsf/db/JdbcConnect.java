@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class JdbcConnect {
     private static final String URL="jdbc:mysql://localhost:3306/aboconta";
     private static final String USER="root";
-    private static final String PASSWORD="";
+    private static final String PASSWORD="estudiante";
     private static transient Connection connection=null;
     
     public static Connection getConnect() throws ClassNotFoundException, SQLException{

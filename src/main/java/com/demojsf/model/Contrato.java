@@ -51,7 +51,6 @@ import java.util.Date;
         return idpropied;
     }
 
-
     public void setNumcontrato(int numcontrato) {
         this.numcontrato = numcontrato;
     }
@@ -87,8 +86,7 @@ import java.util.Date;
     public void setIdpropied(int idpropied) {
         this.idpropied = idpropied;
     }
-    
-    
+        
      @Override
     public String toString() {
         return "Contrato{" + ", numcontrato=" + numcontrato + ", feccreacion=" 
@@ -97,6 +95,5 @@ import java.util.Date;
                 + valor + ", observacion=" + observacion + ", estado=" 
                 + estado + ", idpropied=" + idpropied + '}';
     }
-    
     
 }
