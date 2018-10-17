@@ -5,7 +5,7 @@ import java.util.Date;
  
  public class Comision {
 
-    private int id_comision;
+    private int id_liq_comision;
     private Date fecha_registro;
     private Date mes_liquidado;
     private int num_fac_contrato;
@@ -15,12 +15,12 @@ import java.util.Date;
     private double val_fact_canon_arrendamiento;
     private double val_comision;
 
-    public int getId_comision() {
-        return id_comision;
+    public int getId_liq_comision() {
+        return id_liq_comision;
     }
 
-    public void setId_comision(int id_comision) {
-        this.id_comision = id_comision;
+    public void setId_liq_comision(int id_liq_comision) {
+        this.id_liq_comision = id_liq_comision;
     }
 
     public Date getFecha_registro() {
@@ -89,11 +89,11 @@ import java.util.Date;
     
      @Override
     public String toString() {
-        return "Comision{" + ", fecha_registro=" + fecha_registro + ", mes_liquidado=" 
-                + mes_liquidado + ", num_fac_contrato=" + num_fac_contrato + ", local=" 
-                + local + ", id_propietario=" + id_propietario + ", comision=" 
-                + comision + ", val_fact_canon_arrendamiento=" + val_fact_canon_arrendamiento + ", val_comision=" 
-                + val_comision + '}';
+        return "Liq_comision{" + "id_liq_comision=" + id_liq_comision + ", fecha_registro=" 
+                + fecha_registro + ", mes_liquidado=" + mes_liquidado + ", num_fac_contrato=" 
+                + num_fac_contrato + ", local=" + local + ", id_propietario=" 
+                + id_propietario + ", comision=" + comision + ", val_fact_canon_arrendamiento=" 
+                + val_fact_canon_arrendamiento + ", val_comision=" + val_comision + '}';
     }
     
     

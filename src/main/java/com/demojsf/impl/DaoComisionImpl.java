@@ -22,7 +22,7 @@ public class DaoComisionImpl implements DaoComision<Comision> {
     public void save(Comision c) {
         try {
             if (existe(c)) {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Existente!", "Comision ya existe...."));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Existente!", "Liq_comision ya existe...."));
             } else {
 
                 Connection connect = null;
@@ -31,8 +31,8 @@ public class DaoComisionImpl implements DaoComision<Comision> {
             connect = JdbcConnect.getConnect();
 
             PreparedStatement pst = connect.
-                    prepareStatement("Insert into Comision (id_comision,fecha_registro,mes_liquidado,num_fac_contrato,local,id_propietario,comision,val_fact_canon_arrendamiento,val_comision) values(?,?,?,?,?,?,?,?,?)");
-            pst.setInt(1, c.getId_comision());
+                    prepareStatement("Insert into Liq_comision (id_liq_comision,fecha_registro,mes_liquidado,num_fac_contrato,local,id_propietario,comision,val_fact_canon_arrendamiento,val_comision) values(?,?,?,?,?,?,?,?,?)");
+            pst.setInt(1, c.getId_liq_comision());
             pst.setTimestamp(2, new Timestamp(c.getFecha_registro().getTime()));
             pst.setTimestamp(3, new Timestamp(c.getMes_liquidado().getTime()));
             pst.setInt(4, c.getNum_fac_contrato());
@@ -69,8 +69,8 @@ public class DaoComisionImpl implements DaoComision<Comision> {
             connect = JdbcConnect.getConnect();
 
             PreparedStatement pst = connect.
-                    prepareStatement("Update Comision set fecha_registro=?,mes_liquidado=?,num_fac_contrato=?,local=?,id_propietario=?,comision=?,val_fact_canon_arrendamiento=?,val_comision=? where id_comision=?");
-            pst.setInt(9, c.getId_comision());
+                    prepareStatement("Update Liq_comision set fecha_registro=?,mes_liquidado=?,num_fac_contrato=?,local=?,id_propietario=?,comision=?,val_fact_canon_arrendamiento=?,val_comision=? where id_liq_comision=?");
+            pst.setInt(9, c.getId_liq_comision());
             pst.setTimestamp(1, new Timestamp(c.getFecha_registro().getTime()));
             pst.setTimestamp(2, new Timestamp(c.getMes_liquidado().getTime()));
             pst.setInt(3, c.getNum_fac_contrato());
@@ -100,9 +100,9 @@ public class DaoComisionImpl implements DaoComision<Comision> {
 
             connect = JdbcConnect.getConnect();
 
-            PreparedStatement pst = connect.prepareStatement("Delete from Comision where id_comision=?");
+            PreparedStatement pst = connect.prepareStatement("Delete from Liq_comision where id_liq_comision=?");
             
-            pst.setInt(1, c.getId_comision());
+            pst.setInt(1, c.getId_liq_comision());
             
             pst.executeUpdate();
             
@@ -125,11 +125,11 @@ public class DaoComisionImpl implements DaoComision<Comision> {
         try {
             Connection connect = JdbcConnect.getConnect();
             PreparedStatement pst = connect.
-                    prepareStatement("Select * from Comision order by 1");
+                    prepareStatement("Select * from Liq_comision order by 1");
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 Comision c = new Comision();
-                c.setId_comision(rs.getInt(1));
+                c.setId_liq_comision(rs.getInt(1));
                 c.setFecha_registro(rs.getDate(2));
                 c.setMes_liquidado(rs.getDate(3));
                 c.setNum_fac_contrato(rs.getInt(4));
@@ -149,8 +149,8 @@ public class DaoComisionImpl implements DaoComision<Comision> {
      public boolean existe(Comision c) throws SQLException, ClassNotFoundException {
 
         Connection connect = JdbcConnect.getConnect();
-        PreparedStatement pst = connect.prepareStatement("Select * from Comision where id_comision=?");
-        pst.setInt(1, c.getId_comision());
+        PreparedStatement pst = connect.prepareStatement("Select * from Liq_comision where id_liq_comision=?");
+        pst.setInt(1, c.getId_liq_comision());
         ResultSet rs = pst.executeQuery();
         while (rs.next()) {
             return true;

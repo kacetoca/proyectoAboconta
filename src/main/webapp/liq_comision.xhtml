@@ -29,32 +29,32 @@
                
                <p:panelGrid columns="2" layout="grid" style="border:0px !important; background:none;" styleClass="ui-panelgrid-blank">
                    
-                    <p:outputLabel for="id_comision">Id Comision</p:outputLabel>
-                    <p:inputText id="id_comision" required="true" placeholder="id comision" value="#{comisionBean.comision.id_comision}" ></p:inputText>
+                    <p:outputLabel for="id_liq_comision">Id Comision</p:outputLabel>
+                    <p:inputText id="id_liq_comision" required="true" placeholder="id liq comision" value="#{comisionBean.comision.id_liq_comision}" ></p:inputText>
 
                     <p:outputLabel for="fecha_registro">Fecha Registro Comision</p:outputLabel>
-                    <p:inputText id="fecha_registro" required="true" placeholder="Fecha Comision" value="#{comisionBean.comision.fecha_registro}" ></p:inputText>
+                    <p:calendar id="fecha_registro" placeholder="Fecha Registro Comision" value="#{comisionBean.comision.fecha_registro}" showOn="button" ></p:calendar>
                     
                     <p:outputLabel for="mes_liquidado">Mes liquidado</p:outputLabel>
-                    <p:inputText id="mes_liquidado" required="true" placeholder="Digite Mes Liquidado" value="#{comisionBean.comision.mes_liquidado}"></p:inputText>
+                    <p:calendar id="mes_liquidado" placeholder="Digite Mes Liquidado" value="#{comisionBean.comision.mes_liquidado}" showOn="button" ></p:calendar>
                     
                     <p:outputLabel for="num_fac_contrato">num_fac_contrato</p:outputLabel>
-                    <p:inputNumber id="num_fac_contrato" required="true" placeholder="Numero Factura Contrato" value="#{comisionBean.comision.num_fac_contrato}"></p:inputNumber>
+                    <p:inputNumber id="num_fac_contrato" placeholder="Numero Factura Contrato" value="#{comisionBean.comision.num_fac_contrato}"></p:inputNumber>
                     
                     <p:outputLabel for="local">local</p:outputLabel>
-                    <p:inputText id="local" required="true" placeholder="local" value="#{comisionBean.comision.local}" ></p:inputText>
+                    <p:inputText id="local" placeholder="local" value="#{comisionBean.comision.local}" ></p:inputText>
                     
                     <p:outputLabel for="id_propietario">id_propietario</p:outputLabel>
-                    <p:inputText id="id_propietario" required="true" placeholder="id_propietario" value="#{comisionBean.comision.id_propietario}" ></p:inputText>
+                    <p:inputText id="id_propietario" placeholder="id_propietario" value="#{comisionBean.comision.id_propietario}" ></p:inputText>
                     
                     <p:outputLabel for="comision">comision</p:outputLabel>
-                    <p:inputText id="comision" required="true" placeholder="comision" value="#{comisionBean.comision.comision}" ></p:inputText>
+                    <p:inputText id="comision" placeholder="comision" value="#{comisionBean.comision.comision}" ></p:inputText>
                     
                     <p:outputLabel for="val_fact_canon_arrendamiento">val_fact_canon_arrendamiento</p:outputLabel>
-                    <p:inputText id="val_fact_canon_arrendamiento" required="true" placeholder="val_fact_canon_arrendamiento" value="#{comisionBean.comision.val_fact_canon_arrendamiento}" ></p:inputText>
+                    <p:inputText id="val_fact_canon_arrendamiento" placeholder="val_fact_canon_arrendamiento" value="#{comisionBean.comision.val_fact_canon_arrendamiento}" ></p:inputText>
                     
                     <p:outputLabel for="val_comision">val_comision</p:outputLabel>
-                    <p:inputText id="val_comision" required="true" placeholder="val_comision" value="#{comisionBean.comision.val_comision}" ></p:inputText>
+                    <p:inputText id="val_comision" placeholder="val_comision" value="#{comisionBean.comision.val_comision}" ></p:inputText>
                     
              </p:panelGrid>
             </p:panel>
@@ -73,8 +73,8 @@
                 
                 <p:dataTable  paginator="true" rows="10" emptyMessage="No hay comisiones creadas" id="tabla" value="#{comisionBean.lista}" var="item">
                     
-                    <p:column sortBy="#{item.id_comision}" headerText="id_comision">
-                        <h:outputText value="#{item.id_comision}"></h:outputText>
+                    <p:column sortBy="#{item.id_liq_comision}" headerText="id_comision">
+                        <h:outputText value="#{item.id_liq_comision}"></h:outputText>
                     </p:column>
                     <p:column sortBy="#{item.fecha_registro}" headerText="fecha_registro">
                         <h:outputText value="#{item.fecha_registro}"></h:outputText>

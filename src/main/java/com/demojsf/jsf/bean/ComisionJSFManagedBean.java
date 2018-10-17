@@ -12,12 +12,10 @@ import javax.faces.view.ViewScoped;
 import com.demojsf.model.Propiedad;
 import com.demojsf.dao.DaoComision;
 
-
 @Named(value = "comisionBean")
 @ViewScoped
 
 public class ComisionJSFManagedBean implements Serializable {
-
 
     private Comision comision = new Comision();
     private List<Comision> lista = new ArrayList<>();
@@ -48,7 +46,7 @@ public class ComisionJSFManagedBean implements Serializable {
     @PostConstruct
     public void iniciar() {
         lista = dao.getComision();
-        comision.setId_comision(lista.size() + 1);
+        comision.setId_liq_comision(lista.size() + 1);
     }
 
     public List<Comision> getLista() {
@@ -71,7 +69,7 @@ public class ComisionJSFManagedBean implements Serializable {
         dao.save(comision);
         lista = dao.getComision();
         comision = new Comision();
-        comision.setId_comision(lista.size() + 1);
+        comision.setId_liq_comision(lista.size() + 1);
     }
     
     public void delete() {
@@ -79,7 +77,7 @@ public class ComisionJSFManagedBean implements Serializable {
         dao.delete(comision);
         lista = dao.getComision();
         comision = new Comision();
-        comision.setId_comision(lista.size() + 1);
+        comision.setId_liq_comision(lista.size() + 1);
         modoEdit = true;
         modoInsert = false;
     }
@@ -89,7 +87,7 @@ public class ComisionJSFManagedBean implements Serializable {
         dao.update(comision);
         lista = dao.getComision();
         comision = new Comision();
-        comision.setId_comision(lista.size() + 1);
+        comision.setId_liq_comision(lista.size() + 1);
         modoEdit = true;
         modoInsert = false;
     }

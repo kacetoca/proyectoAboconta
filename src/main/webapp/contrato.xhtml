@@ -27,7 +27,7 @@
                     <p:commandButton title="Actualizar" disabled="#{contratoBean.modoEdit}" icon="fa fa-refresh Fs16 white" update="tabla,@form"  id="btnUpdate"  actionListener="#{contratoBean.update()}"></p:commandButton>
                     <p:commandButton title="Eliminar" disabled="#{contratoBean.modoEdit}"  icon="fa fa-trash Fs16 white" update="tabla,@form" id="bntDelete" actionListener="#{contratoBean.delete()}"></p:commandButton>
                 </f:facet>
-               <!-- <p:panelGrid columns="2">-->
+               
                <p:panelGrid columns="4" layout="grid" style="border:0px !important; background:none;" styleClass="ui-panelgrid-blank">
                    
                     <p:outputLabel for="numcontrato">Numero Contrato</p:outputLabel>
@@ -64,7 +64,6 @@
                     <p:selectOneMenu   filter="true" filterMatchMode="contains"  value="#{contratoBean.contrato.idpropied}" >     
                         <f:selectItems value="#{propiedadBean.lista}" var="prop" itemValue="#{prop.idpropiedad}" itemLabel="#{prop.nombre}"/>
                     </p:selectOneMenu>
-                  
              </p:panelGrid>
             </p:panel>
             
@@ -74,59 +73,44 @@
                     <h:graphicImage url="resources/imagenes/PDF.png" />
                     <p:dataExporter type="pdf" target="tabla" fileName="ContratoPdf"/>
                 </h:commandLink>
-
                 <h:commandLink>
                     <h:graphicImage url="resources/imagenes/XLS.png" />
                     <p:dataExporter type="xls" target="tabla" fileName="ContratoXls"/>
                 </h:commandLink>
-                
                 
                 <p:dataTable  paginator="true" rows="10" emptyMessage="No hay contratos creados" id="tabla" value="#{contratoBean.lista}" var="item">
                     
                     <p:column sortBy="#{item.numcontrato}" headerText="numcontrato">
                         <h:outputText value="#{item.numcontrato}"></h:outputText>
                     </p:column>
-                    
                     <p:column  headerText="feccreacion">
                         <h:outputText value="#{item.feccreacion}"></h:outputText>
-                    
                     </p:column>
-                    
                     <p:column  headerText="fecinicio">
                         <h:outputText value="#{item.fecinicio}" ></h:outputText>
-                  
                     </p:column>
-                    
                     <p:column headerText="fecvencimiento">
                         <h:outputText value="#{item.fecvenc}"></h:outputText>
-                    
                     </p:column>
-                    
                     <p:column headerText="idcliente">
                         <h:outputText value="#{item.idclie}"></h:outputText>
                     </p:column>
-                    
                     <p:column headerText="valor">
                         <h:outputText value="#{item.valor}"></h:outputText>
                     </p:column>
-                    
                     <p:column headerText="observacion">
                         <h:outputText value="#{item.observacion}"></h:outputText>
                     </p:column>
-                    
                     <p:column headerText="estado">
                         <h:outputText value="#{item.estado}"></h:outputText>
                     </p:column>
-                    
                     <p:column headerText="idpropiedad">
                         <h:outputText value="#{item.idpropied}"></h:outputText>
                     </p:column>
-                    
                    <p:column style="width:100px;text-align: center" headerText="Cargar">
                         <p:commandButton update="@form" process="@this" actionListener="#{contratoBean.changeMode()}" icon="fa fa-eye Fs16 white" title="View">
                             <f:setPropertyActionListener value="#{item}" target="#{contratoBean.contrato}" />
                         </p:commandButton>
-                        
                     </p:column>
                     
                 </p:dataTable>
