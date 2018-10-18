@@ -126,13 +126,13 @@
             
             <p:panel header="Listado de Propiedades">
                 
-                <h:commandLink>
+                <h:commandLink immediate="true">
                             <h:graphicImage url="resources/imagenes/PDF.png" />
                             <p:dataExporter type="pdf" target="tabla" fileName="PropiedadPdf"/>
                         </h:commandLink>
 
-                        <h:commandLink>
-                            <h:graphicImage url="resources/imagenes/XLS.png" />
+                <h:commandLink immediate="true">
+                            <h:graphicImage url="resources/imagenes/XLS.png"  />
                             <p:dataExporter type="xls" target="tabla" fileName="PropiedadXls"/>
                         </h:commandLink>
     

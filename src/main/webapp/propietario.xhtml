@@ -77,12 +77,12 @@
             <p:panel header="Listado de Propietarios">
                 
                 
-                        <h:commandLink>
+                        <h:commandLink immediate="true">
                             <h:graphicImage url="resources/imagenes/PDF.png" />
                             <p:dataExporter type="pdf" target="tabla" fileName="PropietariosPdf"/>
                         </h:commandLink>
 
-                        <h:commandLink>
+                        <h:commandLink immediate="true">
                             <h:graphicImage url="resources/imagenes/XLS.png" />
                             <p:dataExporter type="xls" target="tabla" fileName="PropietariosXls"/>
                         </h:commandLink>
