@@ -10,6 +10,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import org.primefaces.component.export.PDFOptions;
 
 @Named(value = "clientBean")
 @ViewScoped
@@ -20,6 +21,28 @@ public class ClientJSFManagedBean implements Serializable {
     private DaoClienteImpl dao = new DaoClienteImpl();
     private boolean modoInsert = false;
     private boolean modoEdit = true;
+    
+    
+    private PDFOptions pdfOpt = new PDFOptions(); //add getter and setter too
+    
+    
+  
+     pdfOpt.setFacetBgColor("#F88017");
+
+     //if, for example, your PDF table has 4 columns
+     //1st column will occupy 10% of table's horizontal width,...3rd - 20%, 4th - 60% 
+     float[] columnWidths = new float[]{0.1f, 0.1f, 0.2f, 0.6f};
+    pdfOpt.setColumnWidths(columnWidths);
+    
+    
+    public PDFOptions getPdfOpt() {
+        return pdfOpt;
+    }
+
+    public void setPdfOpt(PDFOptions pdfOpt) {
+        this.pdfOpt = pdfOpt;
+    }
+    
 
     public boolean isModoInsert() {
         return modoInsert;

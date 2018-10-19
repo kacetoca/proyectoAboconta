@@ -3,6 +3,7 @@ package com.demojsf.jsf.bean;
 
 import com.demojsf.impl.DaoConceptoImpl;
 import com.demojsf.model.Concepto;
+//import com.demojsf.jpa.model.Concepto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,7 @@ import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import com.demojsf.model.Propiedad;
 import com.demojsf.dao.DaoConcepto;
+//import com.demojsf.jpa.control.ConceptoJpaController;
 
 
 @Named(value = "conceptoBean")
@@ -21,7 +23,8 @@ public class ConceptoJSFManagedBean implements Serializable {
 
     private Concepto concepto = new Concepto();
     private List<Concepto> lista = new ArrayList<>();
-    private DaoConceptoImpl dao = new DaoConceptoImpl();
+    //private DaoConceptoImpl dao = new DaoConceptoImpl();
+    //private ConceptoJpaController dao2 = new ConceptoJpaController();
     private boolean modoInsert = false;
     private boolean modoEdit = true;
 
@@ -47,7 +50,7 @@ public class ConceptoJSFManagedBean implements Serializable {
 
     @PostConstruct
     public void iniciar() {
-        lista = dao.getConcepto();
+//        lista = dao.getConcepto();
         concepto.setIdconcepto(lista.size() + 1);
     }
 
@@ -66,18 +69,20 @@ public class ConceptoJSFManagedBean implements Serializable {
     public ConceptoJSFManagedBean() {
     }
 
-    public void save() {
+    public void save() throws Exception {
 
-        dao.save(concepto);
-        lista = dao.getConcepto();
+//       dao.save(concepto);
+//        lista = dao.getConcepto();
+        //dao2.create(concepto);
+        //lista = dao2.findConceptoEntities();
         concepto = new Concepto();
         concepto.setIdconcepto(lista.size() + 1);
     }
     
     public void delete() {
 
-        dao.delete(concepto);
-        lista = dao.getConcepto();
+ //       dao.delete(concepto);
+ //       lista = dao.getConcepto();
         concepto = new Concepto();
         concepto.setIdconcepto(lista.size() + 1);
         modoEdit = true;
@@ -86,8 +91,8 @@ public class ConceptoJSFManagedBean implements Serializable {
 
     public void update() {
 
-        dao.update(concepto);
-        lista = dao.getConcepto();
+//        dao.update(concepto);
+//        lista = dao.getConcepto();
         concepto = new Concepto();
         concepto.setIdconcepto(lista.size() + 1);
         modoEdit = true;

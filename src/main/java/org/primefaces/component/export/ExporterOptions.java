@@ -20,5 +20,7 @@ public interface ExporterOptions {
     String getCellFontColor();
 
     String getCellFontSize();
+    
+    public float[] getColumnWidths();
 
 }

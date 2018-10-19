@@ -24,10 +24,10 @@ public class ExporterFactory {
                     break;
 
                 case PDF:
-                    exporter = new PDFExporter();
+                    exporter = new CustomPDFExporter();
                     break;
 
-                case CSV:
+               /* case CSV:
                     exporter = new CSVExporter(options);
                     break;
 
@@ -40,7 +40,7 @@ public class ExporterFactory {
                     break;
                 case XLSXSTREAM:
                     exporter = new ExcelXStreamExporter();
-                    break;
+                    break;*/
 
             }
         }

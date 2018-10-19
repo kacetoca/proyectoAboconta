@@ -20,6 +20,16 @@ public class PDFOptions implements ExporterOptions {
     private String cellFontColor;
 
     private String cellFontSize;
+    
+    float[] columnWidths;
+
+    public void setColumnWidths(float[] columnWidths) {
+        this.columnWidths = columnWidths;
+    }
+
+    public float[] getColumnWidths() {
+        return columnWidths;
+    }
 
     public PDFOptions() {
     }

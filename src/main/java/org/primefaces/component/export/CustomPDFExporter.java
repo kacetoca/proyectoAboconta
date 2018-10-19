@@ -31,7 +31,7 @@ import org.primefaces.component.datatable.DataTable;
 import org.primefaces.util.ComponentUtils;
 import org.primefaces.util.Constants;
 
-public class PDFExporter extends Exporter {
+public class CustomPDFExporter  extends Exporter {
 
     private Font cellFont;
     private Font facetFont;
@@ -78,97 +78,24 @@ public class PDFExporter extends Exporter {
         }
     }
 
-    @Override
-    public void export(FacesContext context, List<String> clientIds, String outputFileName, boolean pageOnly, boolean selectionOnly,
-                       String encodingType, MethodExpression preProcessor, MethodExpression postProcessor, ExporterOptions options,
-                       MethodExpression onTableRender) throws IOException {
+    
 
-        try {
-            Document document = new Document();
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            PdfWriter.getInstance(document, baos);
-            this.onTableRender = onTableRender;
-
-            if (preProcessor != null) {
-                preProcessor.invoke(context.getELContext(), new Object[]{document});
-            }
-
-            if (!document.isOpen()) {
-                document.open();
-            }
-
-            if (options != null) {
-                expOptions = options;
-            }
-
-            VisitContext visitContext = VisitContext.createVisitContext(context, clientIds, null);
-            VisitCallback visitCallback = new PDFExportVisitCallback(this, document, pageOnly, selectionOnly, encodingType);
-            context.getViewRoot().visitTree(visitContext, visitCallback);
-
-            if (postProcessor != null) {
-                postProcessor.invoke(context.getELContext(), new Object[]{document});
-            }
-
-            document.close();
-
-            writePDFToResponse(context.getExternalContext(), baos, outputFileName);
-
-        }
-        catch (DocumentException e) {
-            throw new IOException(e.getMessage());
-        }
-    }
-
-    @Override
-    public void export(FacesContext context, String outputFileName, List<DataTable> tables, boolean pageOnly, boolean selectionOnly,
-                       String encodingType, MethodExpression preProcessor, MethodExpression postProcessor, ExporterOptions options,
-                       MethodExpression onTableRender) throws IOException {
-
-        try {
-            Document document = new Document();
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            PdfWriter.getInstance(document, baos);
-            this.onTableRender = onTableRender;
-
-            if (preProcessor != null) {
-                preProcessor.invoke(context.getELContext(), new Object[]{document});
-            }
-
-            if (!document.isOpen()) {
-                document.open();
-            }
-
-            if (options != null) {
-                expOptions = options;
-            }
-
-            for (DataTable table : tables) {
-                document.add(exportPDFTable(context, table, pageOnly, selectionOnly, encodingType));
-
-                Paragraph preface = new Paragraph();
-                addEmptyLine(preface, 3);
-                document.add(preface);
-            }
-
-            if (postProcessor != null) {
-                postProcessor.invoke(context.getELContext(), new Object[]{document});
-            }
-
-            document.close();
-
-            writePDFToResponse(context.getExternalContext(), baos, outputFileName);
-
-        }
-        catch (DocumentException e) {
-            throw new IOException(e.getMessage());
-        }
-    }
-
-    protected PdfPTable exportPDFTable(FacesContext context, DataTable table, boolean pageOnly, boolean selectionOnly, String encoding) {
+    protected PdfPTable exportPDFTable(FacesContext context, DataTable table, boolean pageOnly, boolean selectionOnly, String encoding) throws DocumentException {
         int columnsCount = getColumnsCount(table);
         PdfPTable pdfTable = new PdfPTable(columnsCount);
         cellFont = FontFactory.getFont(FontFactory.TIMES, encoding);
         facetFont = FontFactory.getFont(FontFactory.TIMES, encoding, Font.DEFAULTSIZE, Font.BOLD);
+        
+        if (this.expOptions != null) {
+        applyFacetOptions(this.expOptions);
+        applyCellOptions(this.expOptions);
+        //line 1
+        //sets columns column relative widths to iText PdfTable object
+        pdfTable.setWidths(this.expOptions.getColumnWidths());
+        //line 2
+        //decreases page margins comparing to original 'Primefaces' layout
+        pdfTable.setWidthPercentage(100);
+    }
 
         if (onTableRender != null) {
             onTableRender.invoke(context.getELContext(), new Object[]{pdfTable, table});
