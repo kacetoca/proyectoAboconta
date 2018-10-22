@@ -38,7 +38,7 @@ public class CustomPDFExporter  extends Exporter {
     private Color facetBgColor;
     private ExporterOptions expOptions;
     private MethodExpression onTableRender;
-
+/*
     @Override
     public void export(FacesContext context, DataTable table, String filename, boolean pageOnly, boolean selectionOnly, String encodingType,
                        MethodExpression preProcessor, MethodExpression postProcessor, ExporterOptions options,
@@ -130,7 +130,7 @@ public class CustomPDFExporter  extends Exporter {
 
         return pdfTable;
     }
-
+*/
     protected void addTableFacets(FacesContext context, DataTable table, PdfPTable pdfTable, String facetType) {
         String facetText = null;
         UIComponent facet = table.getFacet(facetType);
@@ -185,7 +185,7 @@ public class CustomPDFExporter  extends Exporter {
             }
         }
     }
-
+/*
     protected void addColumnFacets(DataTable table, PdfPTable pdfTable, ColumnType columnType) {
         for (UIColumn col : table.getColumns()) {
             if (col instanceof DynamicColumn) {
@@ -221,7 +221,7 @@ public class CustomPDFExporter  extends Exporter {
             }
         }
     }
-
+*/
     protected void addColumnValue(PdfPTable pdfTable, UIComponent component) {
         String value = component == null ? "" : exportValue(FacesContext.getCurrentInstance(), component);
         addColumnValue(pdfTable, value);
@@ -257,7 +257,7 @@ public class CustomPDFExporter  extends Exporter {
             pdfTable.addCell(new Paragraph(builder.toString(), font));
         }
     }
-
+/*
     protected void writePDFToResponse(ExternalContext externalContext, ByteArrayOutputStream baos, String fileName)
             throws IOException, DocumentException {
 
@@ -272,7 +272,7 @@ public class CustomPDFExporter  extends Exporter {
         baos.writeTo(out);
         externalContext.responseFlushBuffer();
     }
-
+*/
     protected int getColumnsCount(DataTable table) {
         int count = 0;
 

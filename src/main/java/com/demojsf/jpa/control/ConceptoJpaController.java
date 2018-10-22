@@ -35,7 +35,7 @@ import javax.transaction.UserTransaction;
  */
 public class ConceptoJpaController implements Serializable {
 
-    /*public ConceptoJpaController(UserTransaction utx, EntityManagerFactory emf) {
+    public ConceptoJpaController(UserTransaction utx, EntityManagerFactory emf) {
         this.utx = utx;
         this.emf = emf;
     }
@@ -44,8 +44,8 @@ public class ConceptoJpaController implements Serializable {
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
-    }*/
-    
+    }
+    /*
     @Resource
     private UserTransaction utx = null;
     
@@ -66,7 +66,7 @@ public class ConceptoJpaController implements Serializable {
             utx = (UserTransaction) context.lookup ("java:app/bdaboconta");
          }  
     }
-
+*/
     public void create(Concepto concepto) throws RollbackFailureException, Exception {
         if (concepto.getDetallecontratoCollection() == null) {
             concepto.setDetallecontratoCollection(new ArrayList<Detallecontrato>());

@@ -42,7 +42,9 @@ package com.demojsf.model;
     
     @Override
     public String toString() {
-        return "Concepto{" + "Idconcepto=" + idconcepto + ", Codigo Concepto=" + cod_concepto + ", Nombre concepto=" + nom_concepto + ", Porcentaje iva=" + porcentaje_iva + '}';
+        return "Concepto{" + "Idconcepto=" + idconcepto + ", Codigo Concepto=" 
+                + cod_concepto + ", Nombre concepto=" + nom_concepto + ", Porcentaje iva=" 
+                + porcentaje_iva + '}';
     }
         
 }
