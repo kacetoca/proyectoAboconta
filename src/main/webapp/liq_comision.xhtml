@@ -24,7 +24,7 @@
                 <p:panelGrid columns="3" layout="grid" style="border:0px !important; background:none;" styleClass="ui-panelgrid-blank">
                     <p:outputLabel for="periodo_liquidar">Fecha Registro Comision</p:outputLabel>
                     <p:calendar id="periodo_liquidar" placeholder="Periodo a liquidar" value="#{comisionBean.comision.mes_liquidado}" showOn="button" ></p:calendar>
-                    <p:commandButton title="Liquidar" disabled="#{comisionBean.modoInsert}" icon="fa fa-save Fs16 white" update="tabla,@form" id="btnLiquidar" actionListener="#{comisionBean.Liquidar()}" ></p:commandButton>
+                    <p:commandButton title="Liquidar" disabled="#{comisionBean.modoInsert}" icon="fa fa-flash Fs16 white" update="tabla,@form" id="btnLiquidar" actionListener="#{comisionBean.Liquidar()}" ></p:commandButton>
                 </p:panelGrid>    
             </p:panel>
                                  
